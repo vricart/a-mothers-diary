@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────────────
+   DESIGN TOKENS  — change values here to restyle the whole app
+   ───────────────────────────────────────────────────────── */
 :root {
   --paper:    #fbf7ee;
   --card:     #ffffff;
@@ -10,6 +13,7 @@
   --chip:     #f0e9dd;
 }
 
+/* Tailwind utility mapping (bg-paper, text-ink, font-serif, etc.) */
 @theme inline {
   --color-paper:    var(--paper);
   --color-card:     var(--card);
@@ -18,14 +22,239 @@
   --color-accent:   var(--accent);
   --color-hairline: var(--hairline);
   --color-chip:     var(--chip);
-
-  --font-serif:  var(--font-serif);
-  --font-sans:   var(--font-sans);
-  --font-script: var(--font-script);
+  --font-serif:     var(--font-serif);
+  --font-sans:      var(--font-sans);
+  --font-script:    var(--font-script);
 }
 
+/* ─────────────────────────────────────────────────────────
+   BASE
+   ───────────────────────────────────────────────────────── */
 body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* ─────────────────────────────────────────────────────────
+   TYPOGRAPHY
+   ───────────────────────────────────────────────────────── */
+@layer components {
+  /* Small all-caps label */
+  .label {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* Page-level headline */
+  .heading-xl {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    line-height: 1.1;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  /* Section headline */
+  .heading-lg {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    line-height: 1.15;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  /* Card / component headline */
+  .heading-md {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    line-height: 1.3;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  /* General serif body copy */
+  .body-serif {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--ink);
+  }
+
+  /* Italic muted subtitle / tagline */
+  .italic-muted {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* Handwritten-style signature */
+  .signature {
+    font-family: var(--font-script);
+    font-size: 1.2rem;
+    color: var(--muted);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   LAYOUT
+   ───────────────────────────────────────────────────────── */
+@layer components {
+  /* Full-screen page wrapper */
+  .page {
+    min-height: 100svh;
+    background: var(--paper);
+    padding: 4rem 1.5rem;
+  }
+
+  /* Vertically + horizontally centered page (landing) */
+  .page-centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Centered content column */
+  .page-content {
+    max-width: 36rem;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  /* Thin vertical rule used as decorative spacer */
+  .divider {
+    width: 1px;
+    height: 3rem;
+    background: var(--hairline);
+    margin-inline: auto;
+  }
+
+  /* Page header block (label + heading + tagline) */
+  .page-header {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Vertical list of cards */
+  .feed {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   BUTTONS
+   ───────────────────────────────────────────────────────── */
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    letter-spacing: 0.02em;
+    padding: 0.75rem 1.75rem;
+    transition: opacity 0.15s ease;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+  }
+
+  .btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    opacity: 0.8;
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--hairline);
+  }
+
+  .btn-ghost:hover:not(:disabled) {
+    background: var(--chip);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   LETTER CARD
+   ───────────────────────────────────────────────────────── */
+@layer components {
+  .card {
+    background: var(--card);
+    border: 1px solid var(--hairline);
+    border-radius: 0.5rem;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .card-meta {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .card-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    line-height: 1.3;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .card-excerpt {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--ink);
+    opacity: 0.8;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .card-seen {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
 }
