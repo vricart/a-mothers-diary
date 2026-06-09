@@ -14,9 +14,11 @@ export default function FeedPage() {
     <main className="page">
       <div className="page-content">
         <div className="page-header">
-          <p className="feed-date">{dateLabel}</p>
+          <p className="handwritten-label">{dateLabel}</p>
           <h1 className="heading-xl">Letters from the night.</h1>
-          <p className="feed-subtitle">{LETTERS.length} mothers wrote here today.</p>
+          <p className="feed-subtitle">
+            {LETTERS.length} mothers wrote here today.
+          </p>
         </div>
 
         <div className="feed">

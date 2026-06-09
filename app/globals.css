@@ -158,6 +158,21 @@ body {
     gap: 1.25rem;
   }
 
+  /* You page: large handwritten name */
+  .you-name {
+    font-family: var(--font-script);
+    font-size: 3.5rem;
+    color: var(--ink);
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  /* You page: section label with top spacing */
+  .you-section-label {
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+  }
+
   /* About page: vertical list of editorial sections */
   .about-sections {
     display: flex;

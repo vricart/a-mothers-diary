@@ -5,7 +5,7 @@ export default function AboutPage() {
     <main className="page">
       <div className="page-content">
         <div className="page-header">
-          <p className="feed-date">About this diary</p>
+          <p className="handwritten-label">About this diary</p>
           <h1 className="heading-lg">
             For the things that don't have anywhere else to go.
           </h1>
