@@ -1,21 +1,23 @@
 import type { Metadata } from "next";
-import { Newsreader, DM_Sans, Caveat } from "next/font/google";
+import { Libre_Caslon_Text, Work_Sans, Homemade_Apple } from "next/font/google";
 import "./globals.css";
 
-const newsreader = Newsreader({
+const libreCaslon = Libre_Caslon_Text({
   variable: "--font-serif",
   subsets: ["latin"],
+  weight: ["400", "700"],
   style: ["normal", "italic"],
 });
 
-const dmSans = DM_Sans({
+const workSans = Work_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
 });
 
-const caveat = Caveat({
+const homemadeApple = Homemade_Apple({
   variable: "--font-script",
   subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -31,7 +33,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${newsreader.variable} ${dmSans.variable} ${caveat.variable} h-full antialiased`}
+      className={`${libreCaslon.variable} ${workSans.variable} ${homemadeApple.variable} h-full antialiased`}
     >
       <body className="min-h-full">{children}</body>
     </html>

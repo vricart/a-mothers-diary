@@ -1,4 +1,6 @@
 import LetterCard from "@/components/LetterCard";
+import BottomNav from "@/components/BottomNav";
+import Fab from "@/components/Fab";
 import { LETTERS } from "@/lib/letters";
 
 export default function FeedPage() {
@@ -12,9 +14,9 @@ export default function FeedPage() {
     <main className="page">
       <div className="page-content">
         <div className="page-header">
-          <p className="label">{dateLabel}</p>
+          <p className="feed-date">{dateLabel}</p>
           <h1 className="heading-xl">Letters from the night.</h1>
-          <p className="italic-muted">{LETTERS.length} mothers wrote here today.</p>
+          <p className="feed-subtitle">{LETTERS.length} mothers wrote here today.</p>
         </div>
 
         <div className="feed">
@@ -23,6 +25,9 @@ export default function FeedPage() {
           ))}
         </div>
       </div>
+
+      <Fab />
+      <BottomNav active="letters" />
     </main>
   );
 }
